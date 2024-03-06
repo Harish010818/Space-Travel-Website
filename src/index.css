@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    #main-container  {
+        @apply text-white min-h-screen overflow-x-hidden bg-cover bg-center bg-no-repeat;
+    }
+   
+}
