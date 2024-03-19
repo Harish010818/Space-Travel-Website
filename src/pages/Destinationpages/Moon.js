@@ -2,35 +2,44 @@
 import React from "react";
 import Array from "./data";
 import DestinationNav from "../../components/DestinationNav";
+import Header from "../../components/Header";
 
 const Moon = () => {
 
     return (
-     <main className="flex flex-row ml-36 mt-32">
-     <div className = "flex flex-col justify-center items-center gap-4 text-xl uppercase [letter-spacing:2px] -mt-20">
-            <h2><span className="text-white/25 font-bold"> 01</span> pick your destination</h2>
-            <img className="w-96 h-96" src={Array[0]?.img} alt="planet"/>
-      </div >
-        <div className="flex flex-col justify-items-start ml-48 gap-8 -mt-7">
-                <DestinationNav/>
-               <span className="text-8xl uppercase [letter-spacing:2px]">{Array[0]?.name}</span>
-               <p className="max-w-96 text-sm">{Array[0]?.description}</p>
-             <hr className= "border-b-1 border-gray-800 "/>
-          <div className="flex flex-row gap-20 uppercase">
-              <div className="flex flex-col">
-                   <label className="text-xs font-light">Avg. distance</label>
-                   <span className="text-3xl">{Array[0]?.AvgDistance}</span>
-              </div> 
-              <div className="flex flex-col">
-                   <label className="text-xs font-light">Est. travel time</label>
-                   <span className="text-3xl">{Array[0]?.travelTime}</span>
-              </div>
+     <div className = "destination" id="body">
+           <Header />
+           <main className="main-container grid-container--destination flow">      
+            <h1 className="uppercase tablet:justify-self-start  font-Barlow [letter-spacing:3.75px] title">
+               <span className="text-white/25 font-bold mr-2"> 01</span> pick your destination
+            </h1>
+            <img className= "planet-image" src={Array[0]?.img} alt="the moon"/>
+               <div className="tabs-list">
+                   <DestinationNav/>
+               </div>      
+        <article className="destination-info  flow">
+               <span className="uppercase font-Bellefair leading-mid-tight planet--name">{Array[0]?.name}</span>
+               <p className="max-w-80 text-xs font-Roboto font-light [letter-spacing:1px]">{Array[0]?.description}</p>
+          <div>
+        <div className="destination-meta">
+          <div>
+               <h3 className="uppercase text-xs text-white/60">Avg. distance</h3>
+               <p className="uppercase font-Bellefair text-2xl">{Array[0]?.AvgDistance}</p>
+          </div>
+          <div>
+               <h3 className="uppercase text-xs text-white/60">Est. travel time</h3>
+               <p className="uppercase font-Bellefair text-2xl">{Array[0]?.travelTime}</p>
+          </div>
+      </div>
          </div>
+     </article>
+</main>
      </div>
-</main>       
+            
     )
     
 } 
 
 export default Moon;
+
 

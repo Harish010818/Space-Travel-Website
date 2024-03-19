@@ -1,26 +1,26 @@
 import CrewDottedNav from "../../components/CrewDottedNav";
+import Header from "../../components/Header"
 import Array from "./data";
 
 const Crew3 = () => {
     return (
-        <div>
-              <main className="flex flex-row ml-44 mt-16 gap-36">
-                   <div className = "flex flex-col justify-items-start gap-6   text-xl mr-20">
-                       <div className="uppercase [letter-spacing:2px]">
-                               <h2><span className="text-white/25 font-bold">02</span> Meet your crew</h2>
-                              <div className="mt-20">
-                                  <span className="text-blue-500 font-extralight">{Array[2]?.desig}</span>
-                                  <h2 className="text-5xl max-w-lg mt-3">{Array[2]?.name}</h2>
-                              </div>
-                         </div>
-                          <p className="max-w-96 text-sm mt-5">{Array[2]?.about}</p>
-                   </div>             
-                       <img className= "h-96 flex flex-col mt-24" src={Array[2]?.img} alt="crew-astronauts" />
+        <div className = "crew" id="body">
+           <Header />
+           <main className="grid-container--crew main-container justify-items-start flow">
+                     <h2 className="uppercase tablet:justify-self-start font-Barlow [letter-spacing:4.72px] title"><span className="text-white/25 font-bold mr-2">02</span> Meet your crew</h2>
+                        <div className = "dot-indicators">
+                            <CrewDottedNav />
+                        </div>
+                   <article className="crew-details flow">
+                            <header className="uppercase [letter-spacing:2px] flow">
+                            <h2 className="text-blue-500 leading-mid-tight font-extralight font-Bellefair designation">{Array[2]?.desig}</h2>
+                                <p className="crew-name font-Bellefair">{Array[2]?.name}</p>
+                            </header>
+                          <p className="max-w-80 text-xs font-Roboto font-light [letter-spacing:1px]">{Array[2]?.about}</p>
+                   </article>             
+                      <img className= "crew-image border-b border-white/10" src={Array[2]?.img} alt="crew-astronauts" />
            </main>
-           <div className="flex flex-row item ml-44">
-                    <CrewDottedNav/>
-                </div>
-        </div>
+       </div>
            )
 }
 

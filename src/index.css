@@ -1,10 +1,400 @@
+@import url('https://fonts.googleapis.com/css2?family=Bellefair&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
-    #main-container  {
-        @apply text-white min-h-screen overflow-x-hidden bg-cover bg-center bg-no-repeat;
-    }
-   
+
+  
+ /* Box sizing rules */ 
+  *,
+  *::before,
+  *::after {
+    @apply box-border
+  }
+
+
+ /* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+    @apply m-0
 }
+
+
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
+  font: inherit; /* this css property is not available in tailwind */
+}
+
+
+  /* Make images easier to work with */
+img,
+picture {
+  @apply max-w-full block
+}
+
+/* complete body formation */
+#body  {
+  @apply text-white min-h-screen overflow-x-hidden bg-cover bg-center bg-no-repeat 
+  grid
+}
+
+#body {
+  grid-template-rows: min-content 1fr; /* this css property is not available in tailwind */
+}
+
+/* primary navingation section for all screen sizes*/
+.logo {
+       margin: 1.5rem clamp(1.5rem, 5vw, 3.5rem) /*  giving  responsiveness by normal css to logo  */  
+    } 
+     
+    .logo {
+     @apply w-10 h-10 
+   }
+
+
+   .mobile-nav-toggle-bar {
+    @apply desktop:hidden tablet:hidden
+          bg-[url('assets/shared/icon-hamburger.svg')] block absolute /* only visble for mobile screen*/
+          z-20 right-4 top-8 border-0 bg-no-repeat w-6 aspect-square 
+   }
+   .mobile-nav-toggle-cross {
+    @apply desktop:hidden tablet:hidden
+          bg-[url('assets/shared/icon-close.svg')] block absolute /* only visble for mobile screen*/
+          z-20 right-4 top-8 border-0 bg-no-repeat w-6 aspect-square
+   }
+
+    .primary-header {
+      @apply  desktop:flex desktop:justify-between desktop:items-center
+              tablet:flex tablet:justify-between tablet:items-center 
+    }
+    
+    .primary-header::after {
+      @apply desktop:content-[''] desktop:block  desktop:h-px desktop:w-full /* A thin horizontal line*/
+      desktop:bg-white/25 desktop:order-1 desktop:relative desktop:-ml-8
+    }
+    
+
+    .primary-nav-UIhide{
+      @apply desktop:uppercase desktop:font-thin desktop:flex desktop:flex-row desktop:justify-center /*for desktop*/ 
+      desktop:items-center desktop:backdrop-blur-lg desktop:bg-white/5 desktop:order-2 desktop:my-8 
+      desktop:static desktop:inset-0 desktop:pt-0 desktop:translate-x-0 desktop:duration-0
+
+      tablet:uppercase tablet:font-thin tablet:flex tablet:flex-row tablet:justify-center /*for tabelt*/
+      tablet:items-center tablet:backdrop-blur-lg tablet:bg-white/5 tablet:order-2 tablet:my-8 
+      tablet:static tablet:inset-0 tablet:pt-0 tablet:translate-x-0 tablet:duration-0
+      
+      uppercase font-thin flex flex-col backdrop-blur-lg bg-white/5 fixed inset-added /*for mobile hiding nav UI*/
+      pt-16 z-10 translate-x-full transform duration-[700ms] ease-in-out 
+    }
+
+    /*responsiveness by normal css to all screen size  which is not availble in  tailwind */
+    .primary-nav-UIhide {     
+      gap: clamp(1.5rem, 5vw, 3.5rem);
+      padding-inline: clamp(1.5rem, 3vw, 3rem);
+      
+    }
+    .primary-nav-UIshow  {
+      @apply desktop:uppercase desktop:font-thin desktop:flex desktop:flex-row desktop:justify-center /*for desktop*/ 
+      desktop:items-center desktop:backdrop-blur-lg desktop:bg-white/5 desktop:order-2 desktop:my-8 
+      desktop:static desktop:inset-0 desktop:pt-0 desktop:translate-x-0 desktop:duration-0
+
+      tablet:uppercase tablet:font-thin tablet:flex tablet:flex-row tablet:justify-center /*for tabelt*/
+      tablet:items-center tablet:backdrop-blur-lg tablet:bg-white/5 tablet:order-2 tablet:my-8 
+      tablet:static tablet:inset-0 tablet:pt-0 tablet:translate-x-0 tablet:duration-0
+      
+      uppercase font-thin flex flex-col backdrop-blur-lg bg-white/5 fixed inset-added /*for mobile showing nav UI*/
+      pt-16 z-10  transform duration-[800ms] ease-in-out 
+    }
+
+    /* responsiveness by normal css to all screen size  which is not availble in  tailwind */
+    .primary-nav-UIshow {     
+      gap: clamp(1.5rem, 5vw, 3.5rem);
+      padding-inline: clamp(1.5rem, 3vw, 3rem);
+      
+    }
+    
+
+     .primary-header > nav > .navlink  {
+      @apply font-Barlow desktop:border-b desktop:border-white/0 desktop:hover:border-white/50  
+      desktop:pt-8 desktop:pb-8 desktop:flex desktop:gap-3 desktop:[letter-spacing:3px] desktop:text-base
+
+      tablet:border-b tablet:border-white/0 tablet:hover:border-white/50 tablet:pt-8 tablet:pb-8 
+       tablet:flex tablet:gap-2 tablet:[letter-spacing:2px] tablet:text-xs
+      
+       border-b border-white/0 hover:border-white/50 
+       flex gap-2 [letter-spacing:2px] text-xs 
+      
+    }
+
+
+    /* home page section for all screen size*/
+
+   .home {
+      @apply bg-[url('assets/home/background-home-mobile.jpg')]
+      tablet:bg-[url('assets/home/background-home-tablet.jpg')]
+        desktop:bg-[url('assets/home/background-home-desktop.jpg')]  
+   }
+  
+   .main-container {
+    @apply desktop:text-left 
+          grid place-items-center px-4 pb-16 text-center
+    
+   }
+ /*responsiveness by normal css to large screen size  which is not availble in  tailwind */
+   @media(min-width: 45em) {
+      
+    .main-container {
+      grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 30rem)) minmax(2rem, 1fr);
+      column-gap: var(--container-gap, 2rem);
+    }
+    
+  }
+  
+  .grid-container--home {
+     padding-bottom: max(6rem, 20vh);
+     align-items: end;   
+  } 
+  .grid-container--home > *:first-child {
+    @apply desktop:col-start-2  
+}
+  
+  .grid-container--home > *:last-child {
+    @apply desktop:col-start-3 
+  }
+
+  /* large button */
+  .space {
+    @apply [letter-spacing:4px] text-gray-800 block font-Bellefair leading-mid-tight
+  }
+
+  /*responsiveness by normal css to large explore button which is not availble in  tailwind   */
+  .space  {
+    font-size: clamp(5rem, 7vw + 1rem, 8rem);
+    text-shadow: 5px -5px 5px black;    
+  }
+
+
+  /* destination page */
+
+  .destination {
+    @apply bg-[url('assets/destination/background-destination-mobile.jpg')] 
+    tablet:bg-[url('assets/destination/background-destination-tablet.jpg')] 
+    desktop:bg-[url('assets/destination/background-destination-desktop.jpg')]  
+ }
+
+.grid-container--destination {
+  grid-template-areas: 
+        'title'
+        'image'
+        'tabs'
+        'content';
+}
+
+.grid-container--destination > .title {
+  grid-area: title;
+  font-size: clamp(1rem, 1.25vw, 1.75rem)
+}
+
+.grid-container--destination > .planet-image {
+  grid-area: image;
+  max-width: 60%;
+}
+
+.grid-container--destination > .tabs-list {
+  grid-area: tabs;
+}
+.grid-container--destination > .destination-info {
+  grid-area: content;
+}
+
+
+@media (min-width: 45em) {
+  .grid-container--destination {
+    align-items: start;
+    justify-items: start;
+    grid-template-areas: 
+        '. title title .'
+        '. image tabs .'
+        '. image content .';
+}
+
+.grid-container--destination > .planet-image {
+  max-width: 80%;
+}
+
+}
+
+ .flow > *:where(:not(:first-child)) {
+  @apply mt-4
+}
+ 
+.planet--name {
+   font-size: clamp(3.5rem, 5vw + 1rem , 6.375rem);
+}
+
+ .destination-meta {
+  @apply flex flex-col pt-10 mt-10 border-t border-white/10 gap-4
+  tablet:flex-row tablet:justify-evenly desktop:justify-start
+}
+
+.destination-meta {
+  gap: min(6vw, 6rem);
+}
+
+
+/* crew page */
+.crew {
+  @apply bg-[url('assets/crew/background-crew-mobile.jpg')] 
+  tablet:bg-[url('assets/crew/background-crew-tablet.jpg')] 
+  desktop:bg-[url('assets/crew/background-crew-desktop.jpg')]   
+}
+
+.grid-container--crew {
+
+  grid-template-areas: 
+      'title'
+      'image'
+      'tabs'
+      'content';
+}
+
+.grid-container--crew > .title { 
+  grid-area: title;
+}
+
+.grid-container--crew > .crew-image {
+  grid-area: image;
+  max-width: 60%;
+}
+
+.grid-container--crew > .dot-indicators {
+  grid-area: tabs;
+}
+
+.grid-container--crew > .crew-details {
+  grid-area: content;
+}
+
+.designation {
+  font-size: clamp(1rem, 1.5vw, 2rem);
+}
+
+.crew-name {
+  font-size: clamp(1.5rem, 2.5vw, 3.5rem);
+}
+@media (min-width: 35em) {
+  
+  .grid-container--crew {
+      padding-bottom: 0;
+      grid-template-areas: 
+          'title'
+          'content'
+          'tabs'
+          'image';
+  }
+
+
+  @media (min-width: 45em) {
+  
+    .grid-container--crew {
+        grid-template-columns: minmax(1rem, 1fr) minmax(0, 37rem) minmax(0, 23rem) minmax(1rem, 1fr);
+        grid-template-areas: 
+            '. title title .'
+            '. content image .'
+            '. tabs image .';
+    }
+    
+    .grid-container--crew > .crew-image {
+        align-self: end; 
+        max-width: 90%;
+    }
+
+}  }
+
+/* technology page */
+
+.technology {
+  @apply bg-[url('assets/technology/background-technology-mobile.jpg')] 
+     tablet:bg-[url('assets/technology/background-technology-tablet.jpg')]
+     desktop:bg-[url('assets/technology/background-technology-desktop.jpg')]
+}
+
+.grid-container--technology {
+  grid-template-areas: 
+      'title'
+      'image'
+      'tabs'
+      'content';    
+}
+
+.grid-container--technology > .title { 
+  grid-area: title;
+}
+
+.grid-container--technology > .tech--imgL {
+  grid-area: image;
+  max-width: 113%;
+
+}
+.grid-container--technology > .tech--imgP{
+  grid-area: image;
+  display: none;
+}
+
+.grid-container--technology > .circle-tab {
+  grid-area: tabs;
+}
+
+.grid-container--technology > .technology-details {
+  grid-area: content;
+}
+
+.tech-name {
+  font-size: clamp(2rem, 4vw, 6rem);
+}
+
+ nav > .circle-nav {
+  @apply flex  border h-10 w-10 tablet:h-12 tablet:w-12 desktop:w-14  desktop:h-14 
+  rounded-full justify-center items-center
+   hover:bg-white hover:text-black
+}
+
+
+@media (min-width: 45em) {
+  
+  .grid-container--technology {
+  
+      grid-template-columns: minmax(8rem, 1fr) minmax(0, 37rem) minmax(0, 8rem) minmax(0, 23rem) minmax(1rem, 1fr);
+      grid-template-areas:  
+      '. title title title.'
+      '.  tabs content image .'
+      
+         
+  }
+
+  .grid-container--technology >.tech--imgL  {
+    @apply hidden
+}
+  
+  .grid-container--technology >.tech--imgP  { 
+      @apply max-w-full block
+  }
+
+} 
+.grid-container--technology > .technology-details {
+  @apply desktop:col-start-2 desktop:ml-24 
+}
+
+}
+

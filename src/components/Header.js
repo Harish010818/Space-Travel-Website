@@ -1,30 +1,35 @@
 
 import { NavLink  } from "react-router-dom";
 import logu from "../assets/shared/logo.svg"
-
-const activeStyles = {
-  color : "white"
-}
-
+import React from "react";
 
 
 const Header = () => {
 
   const activeStyles = {
-    borderColor: "white"
+    borderColor: "white",
+    color : "white"
+}
+
+const [UI, setUI] = React.useState(false)
+
+const handleClick = () => {
+  setUI(prev => !prev)
 }
 
    return (
-      <header>
-        <nav className = "flex relative flex-row gap-44 justify-center items-center mt-8 ml-2">
-          <img className = "w-10 h-10 mr-52 ml-16" src={logu} alt="space tourism logo" />
-            <hr className= "border-b-1 border-gray-800 absolute w-1/2 mr-96"/>
-            <div className = "text-xm uppercase font-thin flex justify-center items-center gap-16 ml-24 px-16 backdrop-blur-lg bg-white/5">
+      <header className = "primary-header">
+          <img className = "logo" src={logu} alt="space tourism logo" />
+          <button className={ UI ? "mobile-nav-toggle-cross" : "mobile-nav-toggle-bar"  } aria-controls="primary-navigation" onClick={handleClick}></button>
+             <nav 
+                id="primary-nav"
+                className = { UI ? "primary-nav-UIshow" : "primary-nav-UIhide"} 
+              >
                 <NavLink
-                to = "/"
+                to = "/"  
                 end
                 style ={({isActive}) => isActive ? activeStyles : null}
-                className= "border-b border-white/0 hover:border-white/50  pt-8 pb-8 flex gap-2 [letter-spacing:2px]"
+                className= "navlink"
                 >
                 
                 <span>00</span>Home</NavLink>
@@ -32,7 +37,7 @@ const Header = () => {
                 <NavLink
                 to = "/destination"
                 style ={({isActive}) => isActive ? activeStyles : null}
-                className= "border-b border-white/0 hover:border-white/50  pt-8 pb-8 flex gap-2 [letter-spacing:2px]"
+                className= "navlink"
                 >
                 
                 <span>01</span>Destinaton</NavLink>
@@ -40,7 +45,7 @@ const Header = () => {
                 <NavLink
                 to = "/crew"
                 style ={({isActive}) => isActive ? activeStyles : null}
-                className= "border-b border-white/0 hover:border-white/50  pt-8 pb-8 flex gap-2 [letter-spacing:2px]"
+                className= "navlink"
                 >
                 
                 <span>02</span>Crew</NavLink>
@@ -48,12 +53,11 @@ const Header = () => {
                 <NavLink
                 to = "/technology"
                 style ={({isActive}) => isActive ? activeStyles : null}
-                className= "border-b border-white/0 hover:border-white/50  pt-8 pb-8 flex gap-2 [letter-spacing:2px]"
+                className= "navlink"
                 >
                 
                 <span>03</span>Technology</NavLink>
-            </div>
-        </nav>
+            </nav>
       </header>    
       
    )
@@ -61,11 +65,3 @@ const Header = () => {
 
 export default Header;
 
-
-
-
-
-// aria-selected:border-white
-// aria-selected:border-white
-// aria-selected:border-white
-// aria-selected:border-white

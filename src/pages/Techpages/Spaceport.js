@@ -1,25 +1,26 @@
+import Header from "../../components/Header";
 import TechCircleNav from "../../components/TechCircleNav";
 import Array from "./data";
 
 
 const Spaceport = () => {
     return (
-        <main className="flex flex-row item-center gap-20 ml-44 mt-44">
-                  <div className="flex flex-col gap-10 -mt-36">
-                        <h2 className="uppercase text-xl [letter-spacing:2px] font-light"><span  className="text-white/25 font-bold">03</span> Space launch 101</h2>
-                         <div className="flex flex-row gap-20 mt-24">
-                            <TechCircleNav />
-                      <div className="flex flex-col max-w-lg gap-2 -mt-8">
-                           <span className="uppercase [letter-spacing:2px]">The Technologies...</span>
-                           <span className="uppercase text-6xl [letter-spacing:2px]">{Array[1]?.name}</span>
-                           <p className="mt-5 text-xm max-w-sm">{Array[1]?.description}</p>
-                      </div>
-
-                         </div>
-                  </div>
-                  
-                  <img  className = "w-96 h-96 -mt-24" src = {Array[1]?.images} alt="space-technology"/> 
-           </main>
+        <div className = "technology" id="body">
+            <Header />
+            <main className="grid-container--technology desktop:justify-items-start main-container flow">
+                        <h2 className="uppercase tablet:justify-self-start font-Barlow [letter-spacing:4.72px] title"><span  className="text-white/25 font-bold mr-2">03</span> Space launch 101</h2>
+                            <div className="circle-tab"><TechCircleNav /></div>      
+                      <article className="technology-details flow">
+                            <header className="uppercase [letter-spacing:2px] flow" >
+                                <span className=" font-Barlow font-light ">The Technologies...</span>
+                                <h2 className="font-Bellefair leading-mid-tight tech-name">{Array[1]?.name}</h2>
+                            </header>
+                            <p className="max-w-80 text-xs font-Roboto font-light [letter-spacing:1px]">{Array[1]?.description}</p>
+                      </article>
+                  <img className="tech--imgL" src = {Array[1]?.images[1]} alt="space-technology"/> 
+                  <img className="tech--imgP ml-16" src = {Array[1]?.images[0]} alt="space-technology"/> 
+           </main> 
+      </div>
     )
 }
 

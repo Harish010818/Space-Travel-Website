@@ -7,27 +7,27 @@ const TechCircleNav = () => {
     }
 
     return (
-        <nav  className = "flex flex-col gap-8 -mt-6"> 
+        <nav  className = "flex flex-row gap-6 desktop:flex-col"> 
 
             <NavLink 
             to="/technology"
             end
             style ={({isActive}) => isActive ? activeStyles : null} 
-            className= "flex border-box border h-16 w-16 rounded-full justify-center items-center hover:bg-white hover:text-black"
+            className = "circle-nav"
             >
            1</NavLink>
 
             <NavLink 
             to="/technology/spaceport"
             style ={({isActive}) => isActive ? activeStyles : null} 
-            className= "flex border-box border h-16 w-16 rounded-full justify-center items-center hover:bg-white hover:text-black"
+            className= "circle-nav"
             >
            2</NavLink>
 
             <NavLink 
             to="/technology/spacecapsule"
             style ={({isActive}) => isActive ? activeStyles : null} 
-            className= "flex border-box border h-16 w-16 rounded-full justify-center items-center hover:bg-white hover:text-black"
+            className= "circle-nav"
         >
            3</NavLink>
             

@@ -7,7 +7,7 @@ const CrewDottedNav = () => {
     } 
 
     return (
-        <nav  className="flex flex-row gap-4 -mt-20">
+        <div  className="flex flex-row gap-4">
 
             <NavLink 
             to="/crew"
@@ -37,7 +37,7 @@ const CrewDottedNav = () => {
             className= "rounded-full h-4 w-4 bg-white/25 hover:bg-white/50"
          >
            </NavLink>
-      </nav>
+      </div>
     )
 }
 
